@@ -8,6 +8,8 @@ import * as request from "supertest";
 import { expect } from "chai";
 // import { IncomingMessage } from "http";
 
+const nodeMajorVersion = parseInt(process.versions.node.split(".")[0], 10);
+
 describe("component.proxy", function () {
   const appInstances: Application[] = [];
   const remoteApp = new Application();
@@ -103,7 +105,7 @@ describe("component.proxy", function () {
       .expect({
         headers: {
           host: remoteHost,
-          connection: "close",
+          connection: nodeMajorVersion >= 20 ? "keep-alive" : "close",
         },
         url: "/path/to/some",
       });
@@ -116,7 +118,7 @@ describe("component.proxy", function () {
       .expect({
         headers: {
           host: remoteHost,
-          connection: "close",
+          connection: nodeMajorVersion >= 20 ? "keep-alive" : "close",
           "x-abc": "12345678",
         },
         url: "/path/to/some",
