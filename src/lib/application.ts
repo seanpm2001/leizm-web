@@ -19,7 +19,7 @@ export class Application<C extends Context = Context<Request, Response>> extends
   protected defaultRouter?: Router<C>;
 
   /** http.Server实例 */
-  public [SYMBOL_SERVER]: Server;
+  public [SYMBOL_SERVER]?: Server;
 
   /** 模板引擎管理器 */
   public templateEngine: TemplateEngineManager = new TemplateEngineManager();

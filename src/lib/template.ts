@@ -104,7 +104,7 @@ export class TemplateEngineManager {
       const ejs = requireProjectModule("ejs");
       this.register(ext, ejs.renderFile).setDefault(ext, true);
       return this;
-    } catch (err) {
+    } catch (err: any) {
       if (err.code === "MODULE_NOT_FOUND") {
         throw new Error(`initEjs: 找不到 ejs 模块！请先执行 npm install ejs --save 安装。${err.message}`);
       }
@@ -121,7 +121,7 @@ export class TemplateEngineManager {
       const pug = requireProjectModule("pug");
       this.register(ext, pug.renderFile).setDefault(ext, true);
       return this;
-    } catch (err) {
+    } catch (err: any) {
       if (err.code === "MODULE_NOT_FOUND") {
         throw new Error(`initPug: 找不到 pug 模块！请先执行 npm install pug --save 安装。${err.message}`);
       }
@@ -138,7 +138,7 @@ export class TemplateEngineManager {
       const nunjucks = requireProjectModule("nunjucks");
       this.register(ext, nunjucks.render).setDefault(ext, true);
       return this;
-    } catch (err) {
+    } catch (err: any) {
       if (err.code === "MODULE_NOT_FOUND") {
         throw new Error(
           `initNunjucks: 找不到 nunjucks 模块！请先执行 npm install nunjucks --save 安装。${err.message}`,

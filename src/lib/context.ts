@@ -37,10 +37,10 @@ export class Context<Q extends Request = Request, S extends Response = Response>
   protected responseConstructor: ResponseConstructor = Response;
 
   /** 父 Application 实例 */
-  public [SYMBOL_APPLICATION]: Application | undefined;
+  public [SYMBOL_APPLICATION]?: Application;
 
   /** 原始 Session对象 */
-  public [SYMBOL_SESSION]: SessionInstance;
+  public [SYMBOL_SESSION]?: SessionInstance;
   /** Session对象 */
   public get session(): SessionInstance {
     if (this[SYMBOL_SESSION]) return this[SYMBOL_SESSION];
@@ -48,7 +48,7 @@ export class Context<Q extends Request = Request, S extends Response = Response>
   }
 
   /** 原始路由信息 */
-  public [SYMBOL_RAW_ROUTE_INFO]: RawRouteInfo | null;
+  public [SYMBOL_RAW_ROUTE_INFO]?: RawRouteInfo;
 
   /** 其他可任意挂载在Context上的数据 */
   public data: Record<string | number | symbol, any> = {};

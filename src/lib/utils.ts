@@ -49,7 +49,7 @@ export function parseRoutePath(route: string | RegExp, options: RegExpOptions): 
  * @param pathname 当前路径
  * @param route 当前路由规则
  */
-export function testRoutePath(pathname: string, route: ParsedRoutePathResult | undefined): boolean {
+export function testRoutePath(pathname: string, route?: ParsedRoutePathResult): boolean {
   if (!route) {
     return true;
   }
@@ -63,7 +63,7 @@ export function testRoutePath(pathname: string, route: ParsedRoutePathResult | u
  * @param pathname 当前路径
  * @param route 当前路由规则
  */
-export function getRouteParams(pathname: string, route: ParsedRoutePathResult | undefined): Record<string, string> {
+export function getRouteParams(pathname: string, route?: ParsedRoutePathResult): Record<string, string> {
   const params: Record<string, string> = {};
   if (route) {
     route.regexp.lastIndex = 0;
@@ -215,7 +215,7 @@ export function execMiddlewareHandle<C>(
     let p: Promise<void> | void;
     try {
       p = handle(ctx, err);
-    } catch (err) {
+    } catch (err: any) {
       return onError(err);
     }
     if (p && isPromise(p)) {

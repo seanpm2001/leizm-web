@@ -56,7 +56,7 @@ export function jsonParser(options: Partial<JsonParserOptions> = {}): Middleware
         const json = JSON.parse(buf.toString());
         ctx.request.body = json;
         return ctx.next();
-      } catch (err) {
+      } catch (err: any) {
         return ctx.next(new Error(`jsonParser: ${err.message}`));
       }
     });

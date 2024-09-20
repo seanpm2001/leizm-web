@@ -188,7 +188,7 @@ export class Response {
    * @param callback 回调函数
    */
   public end(data?: string | Buffer | Uint8Array, encoding?: string, callback?: () => void): void {
-    return this.res.end.apply(this.res, arguments as any);
+    this.res.end.apply(this.res, arguments as any);
   }
 
   /**
@@ -310,7 +310,7 @@ export class Response {
         this.setHeader("Content-Type", "text/html; charset=utf-8");
       }
       this.end(html);
-    } catch (err) {
+    } catch (err: any) {
       this.ctx.next(err);
     }
   }
