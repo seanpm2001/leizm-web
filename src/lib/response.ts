@@ -86,8 +86,6 @@ export class Response {
 
   /**
    * 获取所有响应头
-   *
-   * @param name 名称
    */
   public getHeaders(): Record<string, string | string[] | number> {
     return (this.res.getHeaders ? this.res.getHeaders() : (this.res as any)._headers) || {};
