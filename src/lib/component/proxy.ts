@@ -36,7 +36,7 @@ export function proxy(options: ProxyOptions): MiddlewareHandle<Context> {
     }
     const target: ProxyTarget = {
       ...baseTarget,
-      path: path.join(baseTarget.path, ctx.request.url),
+      path: path.posix.join(baseTarget.path, ctx.request.url),
       headers: { ...originalHeaders, ...baseTarget.headers },
     };
     proxyRequest(ctx.request.req, ctx.response.res, target).catch((err) => {
