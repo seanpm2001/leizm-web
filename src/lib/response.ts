@@ -16,7 +16,10 @@ import { Readable } from "stream";
 import { responseGzip } from "./module/response.gzip";
 
 export class Response {
-  constructor(public readonly res: ServerResponse, public readonly ctx: Context) {}
+  constructor(
+    public readonly res: ServerResponse,
+    public readonly ctx: Context,
+  ) {}
 
   /**
    * 初始化完成，由 `Context.init()` 自动调用

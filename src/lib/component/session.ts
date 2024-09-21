@@ -90,7 +90,11 @@ export class SessionInstance {
   protected _hash: string = "";
   protected _isDestroy: boolean = false;
 
-  constructor(public readonly ctx: Context, public readonly id: string, options: Required<SessionOptions>) {
+  constructor(
+    public readonly ctx: Context,
+    public readonly id: string,
+    options: Required<SessionOptions>,
+  ) {
     this.store = options.store;
     this.cookieName = options.name;
     this.maxAge = options.maxAge;

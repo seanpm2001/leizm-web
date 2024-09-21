@@ -19,7 +19,10 @@ export class Request {
   /** 已解析的URL信息 */
   protected parsedUrlInfo: ParsedUrl;
 
-  constructor(public readonly req: IncomingMessage, public readonly ctx: Context) {
+  constructor(
+    public readonly req: IncomingMessage,
+    public readonly ctx: Context,
+  ) {
     const req2 = req as ServerRequestEx;
     req2.originalUrl = req2.originalUrl || req.url;
     this.parsedUrlInfo = parseUrl(req.url || "", { query: true });
